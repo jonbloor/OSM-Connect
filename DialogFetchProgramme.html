@@ -7,9 +7,37 @@
   
   <input type="button" value="Fetch Programme" onclick="fetchProgramme()" />
 </form>
+
 <script>
+  // Fetch sections on load
+  window.onload = function() {
+    google.script.run.withSuccessHandler(populateSections).getSections();
+  };
+
+  function populateSections(sections) {
+    var sectionSelect = document.getElementById('section');
+    sections.forEach(function(section) {
+      var option = document.createElement('option');
+      option.value = section.id;
+      option.text = section.name;
+      sectionSelect.appendChild(option);
+    });
+
+    // Now trigger fetching terms for the selected section
+    google.script.run.withSuccessHandler(populateTerms).getTerms(sectionSelect.value);
+  }
+
+  function populateTerms(terms) {
+    var termSelect = document.getElementById('term');
+    terms.forEach(function(term) {
+      var option = document.createElement('option');
+      option.value = term.id;
+      option.text = term.name;
+      termSelect.appendChild(option);
+    });
+  }
+
   function fetchProgramme() {
-    // Code to pass the selected section and term to the server-side function
     google.script.run.fetchProgrammeFromServer(
       document.getElementById('section').value, 
       document.getElementById('term').value
