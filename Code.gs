@@ -88,6 +88,7 @@ function onOpen(e) {
       menu.addItem("Fetch Members ...", "show_fetch_members_dialog");
       menu.addItem("Fetch Movers ...", "show_fetch_movers_dialog");
       menu.addItem("Fetch Event ...", "show_fetch_event_dialog");
+      menu.addItem("Fetch Programme ...", "show_fetch_programme_dialog");
       menu.addItem("Fetch Registers ...", "show_fetch_registers_dialog");
       menu.addItem("Fetch Payments ...", "action_payments");
       menu.addItem("Fetch MailMerge ...", "show_fetch_mailmerge_dialog");
