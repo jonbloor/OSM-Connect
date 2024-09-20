@@ -1,0 +1,18 @@
+<form>
+  <label for="section">Select Section:</label>
+  <select id="section"></select>
+  
+  <label for="term">Select Term:</label>
+  <select id="term"></select>
+  
+  <input type="button" value="Fetch Programme" onclick="fetchProgramme()" />
+</form>
+<script>
+  function fetchProgramme() {
+    // Code to pass the selected section and term to the server-side function
+    google.script.run.fetchProgrammeFromServer(
+      document.getElementById('section').value, 
+      document.getElementById('term').value
+    );
+  }
+</script>
